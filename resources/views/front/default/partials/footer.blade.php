@@ -1,6 +1,7 @@
   <!--================ start footer Area  =================-->
   <footer class="footer-area section_gap">
     <div class="container">
+  
       <div class="row">
         <div class="col-lg-2 col-md-6 single-footer-widget">
           <h4>Top Products</h4>
@@ -58,7 +59,10 @@
       </div>
       <div class="footer-bottom row align-items-center">
         <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved by  <a class="navbar-brand logo_h" href="{{route('main')}}">
+          <img class="logo_height1" src="{{ asset('assets/img/logo.jpg') }}" alt="Logo">
+
+          </a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
         <div class="col-lg-4 col-md-12 footer-social">
           <a href="#"><i class="fa fa-facebook"></i></a>

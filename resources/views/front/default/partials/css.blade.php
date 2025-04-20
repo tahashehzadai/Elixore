@@ -2,7 +2,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" href="{{ asset('assets/img/logo.png') }}" type="image/png" />
+    <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/png" />
     <title>Elixore Perfume Brands</title>
 
     <!-- Bootstrap CSS -->
