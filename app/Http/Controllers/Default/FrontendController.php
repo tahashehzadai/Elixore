@@ -10,5 +10,8 @@ class FrontendController extends Controller
     public function home(){
         return view('front.default.homepage');
     }
+    public function blog(){
+        return view('front.default.blog');
+    }
     
 }

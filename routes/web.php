@@ -17,6 +17,7 @@ Route::get('/clear-cache', function () {
     ]);
 });
 Route::get('/', [FrontendController::class, 'home'])->name('main');
+Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
 
 Route::get('/login', [LoginController::class, 'index'])->name('user.login');
 Route::post('/login/post', [LoginController::class, 'login'])->name('user.login.store');
