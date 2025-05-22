@@ -62,8 +62,16 @@
 
     <button type="submit">Register</button>
     <div class="social mb-2">
-      <div class="gg"><i class="bi bi-google"></i> Google</div>
-      <div class="fb"><i class="bi bi-facebook"></i> Facebook</div>
+<a href="{{ route('google.login') }}" style="text-decoration: none;">
+    <div class="gg">
+        <i class="bi bi-google"></i> Google
+    </div>
+</a>
+<a href="{{ route('facebook.login') }}" style="text-decoration: none;">
+    <div class="fb">
+        <i class="bi bi-facebook"></i> Facebook
+    </div>
+</a>
     </div>
     <div id="responseMsg"></div>
 </form>

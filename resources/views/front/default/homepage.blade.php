@@ -2,20 +2,57 @@
 @section('content')
 
   <!--================Home Banner Area =================-->
-  <section class="home_banner_area mb-40">
-    <div class="banner_inner d-flex align-items-center">
-      <div class="container">
-        <div class="banner_content row">
-          <div class="col-lg-12">
-            <p class="sub text-uppercase">men Collection</p>
-            <h3><span>Show</span> Your <br />Personal <span>Style</span></h3>
-            <h4>Fowl saw dry which a above together place.</h4>
-            <a class="main_btn mt-40" href="#">View Collection</a>
+<style>
+  .home_banner_area {
+    background-color: #000; /* fallback bg color */
+    transition: background-image 0.5s ease-in-out;
+  }
+</style>
+
+@if($banners->count())
+<section class="mb-40">
+  <div id="bannerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      @foreach($banners as $key => $banner)
+      <div class="carousel-item {{ $key == 0 ? 'active' : '' }} home_banner_area"
+           style="background-image: url('{{ asset('storage/' . $banner->image) }}'); background-size: cover; background-position: center;">
+        <div class="banner_inner d-flex align-items-center">
+          <div class="container">
+            <div class="banner_content row">
+              <div class="col-lg-12 text-white">
+                <p class="sub text-uppercase">{{ $banner->sub_title ?? 'Men Collection' }}</p>
+                <h3><span>{{ $banner->title ?? 'Show' }}</span> Your <br />Personal <span>Style</span></h3>
+                <h4>{{ $banner->description ?? 'Fowl saw dry which a above together place.' }}</h4>
+                @if($banner->button)
+                  <a class="main_btn mt-40" href="#">{{ $banner->button }}</a>
+                @else
+                  <a class="main_btn mt-40" href="#">View Collection</a>
+                @endif
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      @endforeach
+
     </div>
-  </section>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+</section>
+@endif
+
+
+
   <!--================End Home Banner Area =================-->
 
   <!-- Start feature Area -->
@@ -79,89 +116,42 @@
       </div>
 
       <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="{{ asset('assets/img/product/feature-product/f-p-1.jpg') }}" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Latest men’s sneaker</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
+      @foreach ($products as $product)
+<div class="col-lg-4 col-md-6">
+  <div class="single-product">
+    <div class="product-img">
+      <img class="img-fluid w-100" 
+           src="{{ $product->image ? asset('storage/' . $product->image) : asset('assets/img/product/default.jpg') }}" 
+           alt="{{ $product->name }}" />
+      <div class="p_icon">
+        <a href="#">
+          <i class="ti-eye"></i>
+        </a>
+        <a href="#">
+          <i class="ti-heart"></i>
+        </a>
+        <a href="#">
+          <i class="ti-shopping-cart"></i>
+        </a>
+      </div>
+    </div>
+    <div class="product-btm">
+      <a href="#" class="d-block">
+        <h4>{{ $product->title ?? $product->name }}</h4>
+      </a>
+      <div class="mt-3">
+        <span class="mr-4">${{ number_format($product->price, 2) }}</span>
+        @if ($product->discount_price)
+          <del>${{ number_format($product->discount_price, 2) }}</del>
+        @endif
+      </div>
+    </div>
+  </div>
+</div>
+@endforeach
 
-        <div class="col-lg-4 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="{{ asset('assets/img/product/feature-product/f-p-2.jpg') }}" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Red women purses</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-lg-4 col-md-6">
-          <div class="single-product">
-            <div class="product-img">
-              <img class="img-fluid w-100" src="{{ asset('assets/img/product/feature-product/f-p-3.jpg') }}" alt="" />
-              <div class="p_icon">
-                <a href="#">
-                  <i class="ti-eye"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-heart"></i>
-                </a>
-                <a href="#">
-                  <i class="ti-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="product-btm">
-              <a href="#" class="d-block">
-                <h4>Men stylist Smart Watch</h4>
-              </a>
-              <div class="mt-3">
-                <span class="mr-4">$25.00</span>
-                <del>$35.00</del>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
   </section>
